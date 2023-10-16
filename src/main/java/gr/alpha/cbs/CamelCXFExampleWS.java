@@ -12,7 +12,7 @@ import javax.jws.WebService;
         serviceName = "ReferenceData",
         portName = "ReferenceDataSOAP",
         targetNamespace = CamelCXFExampleWS.TARGET_NS)
-//@HandlerChain(file = "/context.xml")
+@HandlerChain(file = "/context.xml")
 
 public interface CamelCXFExampleWS {
     public static final String TARGET_NS = "http://fuse.ml.cbs.alpha.gr/ReferenceData/";

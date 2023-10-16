@@ -20,8 +20,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <version.fuse>7.4.0.fuse-740036-redhat-00002</version.fuse>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <version.maven.compiler.plugin>3.8.1</version.maven.compiler.plugin>
         <maven.war.plugin.version>3.1.0</maven.war.plugin.version>
         <commons-collection-version>3.2.2.redhat-2</commons-collection-version>
@@ -88,6 +88,13 @@
             <artifactId>camel-core</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>apt</artifactId>
@@ -159,10 +166,7 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${version.maven.compiler.plugin}</version>
-                    <configuration>
-                        <source>11</source>
-                        <target>11</target>
-                    </configuration>
+                    
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

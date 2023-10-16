@@ -1,7 +1,7 @@
 package gr.alpha.cbs;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.cxf.jaxws.CxfEndpoint;
+import org.apache.camel.component.cxf.CxfEndpoint;
 import org.w3c.dom.Document;
 
 import javax.enterprise.context.ApplicationScoped;
