@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:cbsns="http://fuse.ml.cbs.alpha.gr/ReferenceData/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ReferenceData" targetNamespace="http://fuse.ml.cbs.alpha.gr/ReferenceData/">
+
+
+	<wsdl:types>
+
+
+		<xsd:schema targetNamespace="http://fuse.ml.cbs.alpha.gr/ReferenceData/"
+			elementFormDefault="qualified">
+			
+			<xsd:include schemaLocation="xsd/refData.xsd" />
+		
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getListReferenceDataItem">
+		<wsdl:part name="parameters" element="cbsns:getListReferenceDataItem"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getListReferenceDataItemResponse">
+		<wsdl:part name="parameters" element="cbsns:getListReferenceDataItemResponse"></wsdl:part>
+	</wsdl:message>
+
+	
+	<wsdl:message name="TranslateData">
+		<wsdl:part name="parameters" element="cbsns:TranslateData"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="TranslateDataResponse">
+		<wsdl:part name="parameters" element="cbsns:TranslateDataResponse"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:portType name="ReferenceData">
+		<wsdl:operation name="getListReferenceDataItem">
+			<wsdl:input message="cbsns:getListReferenceDataItem"></wsdl:input>
+			<wsdl:output message="cbsns:getListReferenceDataItemResponse"></wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="TranslateData">
+			<wsdl:input message="cbsns:TranslateData"></wsdl:input>
+			<wsdl:output message="cbsns:TranslateDataResponse"></wsdl:output>
+		</wsdl:operation>
+		
+	</wsdl:portType>
+
+	<wsdl:binding name="ReferenceDataSOAP" type="cbsns:ReferenceData">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getListReferenceDataItem">
+			<soap:operation soapAction="http://fuse.ml.cbs.alpha.gr/ReferenceData/getListReferenceDataItem" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="TranslateData">
+			<soap:operation soapAction="http://fuse.ml.cbs.alpha.gr/ReferenceData/TranslateData" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+	</wsdl:binding>
+
+	<wsdl:service name="ReferenceData">
+		<wsdl:port binding="cbsns:ReferenceDataSOAP" name="ReferenceDataSOAP">
+			<soap:address location="http://localhost:8080/hor-referenceData/ReferenceData" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,146 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cbsns="http://fuse.ml.cbs.alpha.gr/ReferenceData/"
+	elementFormDefault="qualified" targetNamespace="http://fuse.ml.cbs.alpha.gr/ReferenceData/">
+
+
+	<xsd:include schemaLocation="commonXsds.xsd" />
+	
+	<xsd:element name="getListReferenceDataItem">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element type="cbsns:getListReferenceDataItemPayload" name="getListReferenceDataItemPayload"  />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="getListReferenceDataItemPayload">
+		<xsd:sequence>
+			<xsd:element name="RequestDataList" type="cbsns:RequestDataList" />
+			<xsd:element ref="cbsns:LoggingInfo"  />
+			<xsd:element ref="cbsns:EnvParams"  />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="getListReferenceDataItemResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element type="cbsns:getListReferenceDataItemResponsePayload" name="getListReferenceDataItemResponsePayload" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	
+	<xsd:complexType name="getListReferenceDataItemResponsePayload">
+		<xsd:sequence>
+			<xsd:element name="ResponseDataList" type="cbsns:ResponseDataList" minOccurs="0" maxOccurs="1" />
+			<xsd:element ref="cbsns:LoggingInfo"  />
+			<xsd:element ref="cbsns:ErrorMessage" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	
+	
+	<xsd:complexType name="RequestDataList">
+		<xsd:sequence>
+			<xsd:element name="RequestData" type="cbsns:RequestDataType" minOccurs="1" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RequestDataType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" />
+			<xsd:element name="Version" type="xsd:int" minOccurs="0" nillable="true" />
+			<xsd:element name="LanguageId" type="xsd:int" />
+			<xsd:element name="SystemsId" type="xsd:int" />
+			<xsd:element name="Value" type="xsd:string" minOccurs="0" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ResponseDataList">
+		<xsd:sequence>
+			<xsd:element name="RefItems" type="cbsns:RefItemsType" minOccurs="1" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RefItemsType">
+		<xsd:sequence>
+			<xsd:element name="Name" minOccurs="0" maxOccurs="1" nillable="true" type="xsd:string" />
+			<xsd:element name="Version" minOccurs="0" maxOccurs="1" nillable="true" type="xsd:int" />
+			<xsd:element name="LanguageId" type="xsd:int" />
+			<xsd:element name="SystemsId" type="xsd:int" minOccurs="0" maxOccurs="1" nillable="true" />
+			<xsd:element name="Value" minOccurs="1" maxOccurs="1" type="xsd:string" />
+			<xsd:element name="ReferenceData" type="cbsns:ResponseDataType" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ResponseDataType">
+		<xsd:sequence>
+			<xsd:element name="Item" type="cbsns:ItemType" minOccurs="1" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="ItemType">
+		<xsd:sequence>
+			<xsd:element name="Member" minOccurs="0" maxOccurs="1"  type="xsd:string" />
+			<xsd:element name="isActive" minOccurs="0" maxOccurs="1" type="xsd:string" />
+			<xsd:element name="Value" minOccurs="0" maxOccurs="1" type="xsd:string" />
+			<xsd:element name="StartDate" minOccurs="0" maxOccurs="1" type="xsd:string" />
+			<xsd:element name="EndDate" minOccurs="0" maxOccurs="1" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="TranslateData">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="TranslateDataPayload" type="cbsns:TranslateDataPayload" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="TranslateDataPayload">
+		<xsd:sequence>
+			<xsd:element name="RequestItem" type="cbsns:TranslateDataRequestItem" />
+			<xsd:element maxOccurs="1" minOccurs="1" name="LoggingInfo"
+				type="cbsns:LoggingInfoType" />
+			<xsd:element maxOccurs="1" minOccurs="1" name="EnvParams"
+				type="cbsns:EnvParamsType" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="TranslateDataResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="TranslateDataResponsePayload" type="cbsns:TranslateDataResponsePayload" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="TranslateDataResponsePayload">
+		<xsd:sequence>
+			<xsd:element name="TranslateDataResponseItem" type="cbsns:TranslateDataResponseItem"
+				maxOccurs="1" minOccurs="0" />
+			<xsd:element name="ErrorMessage" type="cbsns:ErrorMessageType"
+				maxOccurs="1" minOccurs="0" />
+			<xsd:element name="LoggingInfo" type="cbsns:LoggingInfoType"
+				maxOccurs="1" minOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	
+	<xsd:complexType name="TranslateDataRequestItem">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="FromSystem" type="xsd:string"/>
+         	<xsd:element maxOccurs="1" minOccurs="0" name="ToSystem" type="xsd:string"/>
+         	<xsd:element maxOccurs="1" minOccurs="0" name="ParentName" type="xsd:string"/>
+         	<xsd:element maxOccurs="1" minOccurs="0" name="Value" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="TranslateDataResponseItem">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="TranslatedValue" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+</xsd:schema>

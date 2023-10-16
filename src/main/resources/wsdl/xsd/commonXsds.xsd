@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cbsns="http://fuse.ml.cbs.alpha.gr/ReferenceData/" elementFormDefault="qualified" targetNamespace="http://fuse.ml.cbs.alpha.gr/ReferenceData/">
+
+
+	<!-- Because of different names that exists in some projects (refData - product-studio ) we created 
+	a complex type that is used from below Elements -->
+	
+	<xsd:element name="LoggingInfo" type="cbsns:LoggingInfoType" />
+	<xsd:element name="EnvParams" type="cbsns:EnvParamsType" />
+	<xsd:element name="ErrorMessage" type="cbsns:ErrorMessageType"/>
+
+	<xsd:complexType name="ErrorMessageType">
+		<xsd:sequence>
+			<xsd:element name="ErrorType" type="xsd:string" />
+			<xsd:element name="SourceSystem" type="xsd:string" />
+			<xsd:element name="Component" type="xsd:string" />
+			<xsd:element name="ErrorCode" type="xsd:string" />
+			<xsd:element name="SeverityLevel" type="xsd:string" />
+			<xsd:element name="Suggestions" type="xsd:string" />
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ServerName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ParameterValues" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="LoggingInfoType">
+		<xsd:sequence>
+			<xsd:element name="RequestId" type="xsd:string"></xsd:element>
+			<xsd:element name="SessionId" type="xsd:string"></xsd:element>
+			<xsd:element name="BusinessCaseId" type="xsd:string" minOccurs="0" nillable="true"></xsd:element>
+			<xsd:element name="SequenceId" type="xsd:string"></xsd:element>
+			<xsd:element name="UserId" type="xsd:string"></xsd:element>
+			<xsd:element name="CBSUnId" type="xsd:string"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="EnvParamsType">
+		<xsd:sequence>
+			<xsd:element name="WorkingDate" type="xsd:date" />
+			<xsd:element name="PreviousWorkingDate" type="xsd:date" />
+			<xsd:element name="NextWorkingDate" type="xsd:date" />
+			<xsd:element name="ValeurDate" type="xsd:date" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="MachineDate" type="xsd:date" minOccurs="0" maxOccurs="1" />
+			
+			<!-- BUCR ELEMENTS -->
+			<xsd:element name="ResourceID" type="xsd:string" />
+			<xsd:element name="ResourceName" type="xsd:string" minOccurs="0"/>
+			
+			<xsd:element name="UnitCodeLevel1" type="xsd:string" />
+			<xsd:element name="UnitTypeCodeLevel1" type="xsd:string" />
+			
+			<xsd:element name="UnitCodeLevel2" type="xsd:string" minOccurs="0" />
+			<xsd:element name="UnitTypeCodeLevel2" type="xsd:string" minOccurs="0" />
+			
+			<xsd:element name="UnitCodeLevel3" type="xsd:string" minOccurs="0" />
+			<xsd:element name="UnitTypeCodeLevel3" type="xsd:string" minOccurs="0" />
+			
+			<xsd:element name="UnitCodeLevel4" type="xsd:string" minOccurs="0" />
+			<xsd:element name="UnitTypeCodeLevel4" type="xsd:string" minOccurs="0" />
+
+			<xsd:element name="AliasList" type="cbsns:AliasListType" minOccurs="0" maxOccurs="1" />
+			
+			<xsd:element name="ChannelTypeCode" type="xsd:string" />
+			<xsd:element name="ResourceTypeCode" type="xsd:string" />
+			<xsd:element name="ReleaseType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="PageSize" type="xsd:int" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="PageKey" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Language" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="UserLanguage" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CardReaderPresent" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovalID" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovalType" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BusinessFlowName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="UserRoleList" type="cbsns:UserRoleList" minOccurs="0" maxOccurs="1" />
+			
+			<xsd:element name="RelationValue1" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RelationType1" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RelationValue2" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RelationType2" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RelationValue3" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RelationType3" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RelationValue4" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RelationType4" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovalTypePoint" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovalTypeRole" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BaseCurrency" type="xsd:int" minOccurs="0" maxOccurs="1" />		
+		</xsd:sequence>						
+	</xsd:complexType>
+	
+	<xsd:complexType name="UserRoleList">
+		<xsd:sequence>
+			<xsd:element name="UserRole" type="xsd:string" minOccurs="1" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="AliasListType">
+		<xsd:sequence>
+			<xsd:element name="Alias" type="xsd:string" minOccurs="1" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+</xsd:schema>
